@@ -4,26 +4,35 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/AKBARNGILBRANNT/CodeIgniter.git'
+                git 'https://github.com/AKBARNGILBRANT/CodeIgniter.git'
             }
         }
 
         stage('Build') {
             steps {
-                echo 'Building...'
+                echo 'Building CodeIgniter...'
             }
         }
 
         stage('Test') {
             steps {
-                echo 'Testing...'
+                echo 'Running tests...'
             }
         }
 
         stage('Deploy') {
             steps {
-                echo 'Deploying...'
+                echo 'Deploying application...'
             }
+        }
+    }
+
+    post {
+        success {
+            echo 'Pipeline berhasil!'
+        }
+        failure {
+            echo 'Pipeline gagal!'
         }
     }
 }
